@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Tags | Howe&#39;s Blog</title>
+<title>Posts | Howe&#39;s Blog</title>
 <meta name="keywords" content="">
-<meta name="description" content="">
+<meta name="description" content="Posts - Howe&#39;s Blog">
 <meta name="author" content="Howe">
-<link rel="canonical" href="/tags/">
+<link rel="canonical" href="/post/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.d6fcd20a4fb86efa4dfac8ec95da60244cc8871042183da1ef28e3a762ad79c8.css" integrity="sha256-1vzSCk&#43;4bvpN&#43;sjsldpgJEzIhxBCGD2h7yjjp2Ktecg=" rel="preload stylesheet" as="style">
 <link rel="icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="/tags/index.xml">
-<link rel="alternate" hreflang="en" href="/tags/">
+<link rel="alternate" type="application/rss+xml" href="/post/index.xml">
+<link rel="alternate" hreflang="en" href="/post/">
 <noscript>
     <style>
         #theme-toggle,
@@ -56,15 +56,30 @@
         }
 
     </style>
-</noscript><meta property="og:url" content="/tags/">
+</noscript><meta property="og:url" content="/post/">
   <meta property="og:site_name" content="Howe&#39;s Blog">
-  <meta property="og:title" content="Tags">
+  <meta property="og:title" content="Posts">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tags">
+<meta name="twitter:title" content="Posts">
 <meta name="twitter:description" content="">
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "/post/"
+    }
+  ]
+}
+</script>
 </head>
 
 <body class="list" id="top">
@@ -119,31 +134,39 @@
             </li>
             <li>
                 <a href="/tags/" title="Tags">
-                    <span class="active">Tags</span>
+                    <span>Tags</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
-<main class="main">
-<header class="page-header">
-    <h1>Tags</h1>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="/">Home</a></div>
+  <h1>
+    Posts
+  </h1>
 </header>
 
-<ul class="terms-tags">
-    <li>
-        <a href="/tags/github-actions/">Github Actions <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="/tags/github-workflow/">Github workflow <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="/tags/hugo/">Hugo <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-    <li>
-        <a href="/tags/papermod/">PaperMod <sup><strong><sup>1</sup></strong></sup> </a>
-    </li>
-</ul>
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hugo博客搭建
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>1.安装Hugo brew install hugo 新建博客管理文件夹
+hugo new site blog_name --format yaml 设置博客主题
+我用的是Hugo PaperMod
+$ git init $ git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod 修改博客配置应用主题,通过修改根目录下的hugo.yml文件
+baseURL: &#34;&#34; languageCode: zh-cn title: Howe&#39;s Blog theme: PaperMod 这样博客的初步框架就打好了，可以先本地预览一下。命令行输入以下指令之后，就可以本地预览了，打开浏览器访问//localhost:1313/
+hugo server 2.配置PaperMod 主题配置可以查看github介绍，参考example设置。
+3.新建文章 hugo new post/first.md 文章头需要设置为
+date: &#39;自动生成&#39; draft: false title: &#39;first&#39; Tags: [&#39;tags&#39;,&#39;example] 4.设置GitHub Actions 通过设置github workflow，这样就可以通过自动化发布自己的博文啦！因为我的仓库和github pages仓库不是同一个，所有需要将生成出来的静态文件，push到另一仓库，我的yml配置如下，在仓库根目录下创建 .github/workflow/hugo-deploy.yml
+name: GitHub Pages on: push: branches: - main # Set a branch to deploy pull_request: jobs: deploy: runs-on: ubuntu-22.04 concurrency: group: ${{ github.workflow }}-${{ github.ref }} steps: - uses: actions/checkout@v4 with: submodules: true # Fetch Hugo themes (true OR recursive) fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod - name: Setup Hugo uses: peaceiris/actions-hugo@v3 with: hugo-version: &#39;latest&#39; # extended: true - name: Build run: hugo --minify - name: Deploy uses: peaceiris/actions-gh-pages@v3 with: PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }} publish_dir: ./public EXTERNAL_REPOSITORY: your own github page repo PUBLISH_BRANCH: master commit_message: ${{ github.event.head_commit.message }} 设置完成之后，每次push就会出发github action发布博文了。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-01-05 19:33:56 +0800 +0800'>January 5, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Howe</footer>
+  <a class="entry-link" aria-label="post link to Hugo博客搭建" href="/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"></a>
+</article>
     </main>
     
 <footer class="footer">

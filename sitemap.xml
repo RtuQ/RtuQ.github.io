@@ -2,41 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>hoewblogs.top/post/git%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</loc>
+    <loc>/post/git%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2025-01-07T22:31:49+08:00</lastmod>
   </url><url>
-    <loc>hoewblogs.top/</loc>
+    <loc>/</loc>
     <lastmod>2025-01-07T22:31:49+08:00</lastmod>
   </url><url>
-    <loc>hoewblogs.top/post/</loc>
+    <loc>/post/</loc>
     <lastmod>2025-01-07T22:31:49+08:00</lastmod>
   </url><url>
-    <loc>hoewblogs.top/categories/</loc>
+    <loc>/categories/</loc>
     <lastmod>2025-01-05T19:33:56+08:00</lastmod>
   </url><url>
-    <loc>hoewblogs.top/tags/github-actions/</loc>
+    <loc>/tags/github-actions/</loc>
     <lastmod>2025-01-05T19:33:56+08:00</lastmod>
   </url><url>
-    <loc>hoewblogs.top/tags/github-workflow/</loc>
+    <loc>/tags/github-workflow/</loc>
     <lastmod>2025-01-05T19:33:56+08:00</lastmod>
   </url><url>
-    <loc>hoewblogs.top/tags/hugo/</loc>
+    <loc>/tags/hugo/</loc>
     <lastmod>2025-01-05T19:33:56+08:00</lastmod>
   </url><url>
-    <loc>hoewblogs.top/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
+    <loc>/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2025-01-05T19:33:56+08:00</lastmod>
   </url><url>
-    <loc>hoewblogs.top/tags/papermod/</loc>
+    <loc>/tags/papermod/</loc>
     <lastmod>2025-01-05T19:33:56+08:00</lastmod>
   </url><url>
-    <loc>hoewblogs.top/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2025-01-05T19:33:56+08:00</lastmod>
   </url><url>
-    <loc>hoewblogs.top/categories/%E6%8A%80%E6%9C%AF/</loc>
+    <loc>/categories/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2025-01-05T19:33:56+08:00</lastmod>
   </url><url>
-    <loc>hoewblogs.top/archives/</loc>
+    <loc>/archives/</loc>
   </url><url>
-    <loc>hoewblogs.top/search/</loc>
+    <loc>/search/</loc>
   </url>
 </urlset>

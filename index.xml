@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Howe&#39;s Blog</title>
-    <link>hoewblogs.top/</link>
+    <link>/</link>
     <description>Recent content on Howe&#39;s Blog</description>
     <generator>Hugo -- 0.140.2</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 07 Jan 2025 22:31:49 +0800</lastBuildDate>
-    <atom:link href="hoewblogs.top/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Git命令使用</title>
-      <link>hoewblogs.top/post/git%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</link>
+      <link>/post/git%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Tue, 07 Jan 2025 22:31:49 +0800</pubDate>
-      <guid>hoewblogs.top/post/git%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</guid>
+      <guid>/post/git%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</guid>
       <description>&lt;h1 id=&#34;1-git-stash-命令&#34;&gt;1.&lt;code&gt;git stash&lt;/code&gt;命令&lt;/h1&gt;
 &lt;h2 id=&#34;11-git-stash命令&#34;&gt;1.1 &lt;code&gt;git stash&lt;/code&gt;命令&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;git stash&lt;/code&gt;命令用于将当前工作区的修改保存到栈中，以便后续恢复。它可以将工作区的修改保存到栈中，然后切换到其他分支进行工作，而不影响当前分支的修改。&lt;/p&gt;
@@ -25,15 +25,13 @@
 &lt;h2 id=&#34;15-git-stash-drop命令&#34;&gt;1.5 &lt;code&gt;git stash drop&lt;/code&gt;命令&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;git stash drop&lt;/code&gt;命令用于从栈中删除指定的修改。它可以从栈中删除指定的修改，以便用户可以继续修改。&lt;/p&gt;
 &lt;h2 id=&#34;16-git-stash-clear命令&#34;&gt;1.6 &lt;code&gt;git stash clear&lt;/code&gt;命令&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;git stash clear&lt;/code&gt;命令用于清空栈中的所有修改。它可以将栈中的所有修改清空，以便用户可以继续修改。&lt;/p&gt;
-&lt;h2 id=&#34;17-git-stash-show命令&#34;&gt;1.7 &lt;code&gt;git stash show&lt;/code&gt;命令&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;git stash show&lt;/code&gt;命令用于显示栈中的修改。它可以将栈中的修改显示出来，以便用户查看和选择要恢复的修改。&lt;/p&gt;</description>
+&lt;p&gt;&lt;code&gt;git stash clear&lt;/code&gt;命令用于清空栈中的所有修改。它可以将栈中的所有修改清空，以便用户可以继续修改。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Hugo博客搭建</title>
-      <link>hoewblogs.top/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <link>/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Sun, 05 Jan 2025 19:33:56 +0800</pubDate>
-      <guid>hoewblogs.top/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <guid>/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
       <description>&lt;h1 id=&#34;1安装hugo&#34;&gt;1.安装Hugo&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install hugo
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol&gt;

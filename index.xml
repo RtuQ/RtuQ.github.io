@@ -6,8 +6,33 @@
     <description>Recent content on Howe&#39;s Blog</description>
     <generator>Hugo -- 0.140.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Jan 2025 19:33:56 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jan 2025 22:31:49 +0800</lastBuildDate>
     <atom:link href="hoewblogs.top/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git命令使用</title>
+      <link>hoewblogs.top/post/git%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Tue, 07 Jan 2025 22:31:49 +0800</pubDate>
+      <guid>hoewblogs.top/post/git%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</guid>
+      <description>&lt;h1 id=&#34;1-git-stash-命令&#34;&gt;1.&lt;code&gt;git stash&lt;/code&gt;命令&lt;/h1&gt;
+&lt;h2 id=&#34;11-git-stash命令&#34;&gt;1.1 &lt;code&gt;git stash&lt;/code&gt;命令&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;git stash&lt;/code&gt;命令用于将当前工作区的修改保存到栈中，以便后续恢复。它可以将工作区的修改保存到栈中，然后切换到其他分支进行工作，而不影响当前分支的修改。&lt;/p&gt;
+&lt;h2 id=&#34;12-git-stash-pop命令&#34;&gt;1.2 &lt;code&gt;git stash pop&lt;/code&gt;命令&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;git stash pop&lt;/code&gt;命令用于将栈中的修改恢复到工作区，并从栈中删除该修改。它可以将栈中的修改恢复到工作区，并且删除栈中的该修改，以便后续可以继续工作。&lt;/p&gt;
+&lt;h2 id=&#34;13-git-stash-list命令&#34;&gt;1.3 &lt;code&gt;git stash list&lt;/code&gt;命令&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;git stash list&lt;/code&gt;命令用于列出栈中的所有修改。它可以将栈中的所有修改列出，以便用户查看和选择要恢复的修改。&lt;/p&gt;
+&lt;h2 id=&#34;14-git-stash-apply命令&#34;&gt;1.4 &lt;code&gt;git stash apply&lt;/code&gt;命令&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;git stash apply&lt;/code&gt;命令用于将栈中的修改恢复到工作区，但不从栈中删除该修改。它可以将栈中的修改恢复到工作区，并且不删除栈中的该修改，以便用户可以继续修改。&lt;/p&gt;
+&lt;h2 id=&#34;15-git-stash-drop命令&#34;&gt;1.5 &lt;code&gt;git stash drop&lt;/code&gt;命令&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;git stash drop&lt;/code&gt;命令用于从栈中删除指定的修改。它可以从栈中删除指定的修改，以便用户可以继续修改。&lt;/p&gt;
+&lt;h2 id=&#34;16-git-stash-clear命令&#34;&gt;1.6 &lt;code&gt;git stash clear&lt;/code&gt;命令&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;git stash clear&lt;/code&gt;命令用于清空栈中的所有修改。它可以将栈中的所有修改清空，以便用户可以继续修改。&lt;/p&gt;
+&lt;h2 id=&#34;17-git-stash-show命令&#34;&gt;1.7 &lt;code&gt;git stash show&lt;/code&gt;命令&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;git stash show&lt;/code&gt;命令用于显示栈中的修改。它可以将栈中的修改显示出来，以便用户查看和选择要恢复的修改。&lt;/p&gt;
+&lt;h2 id=&#34;18-git-stash-branch命令&#34;&gt;1.8 &lt;code&gt;git stash branch&lt;/code&gt;命令&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;git stash branch&lt;/code&gt;命令用于创建一个新的分支，并将栈中的修改应用到该分支上。它可以将栈中的修改应用到新的分支上，以便用户可以继续修改。&lt;/p&gt;
+&lt;h2 id=&#34;19-git-stash-save命令&#34;&gt;1.9 &lt;code&gt;git stash save&lt;/code&gt;命令&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;git stash save&lt;/code&gt;命令用于将当前工作区的修改保存到栈中，并添加注释。它可以将当前工作区的修改保存到栈中，并添加注释，以便用户可以查看和选择要恢复的修改。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hugo博客搭建</title>
       <link>hoewblogs.top/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>

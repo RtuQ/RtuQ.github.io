@@ -10,7 +10,7 @@
 <meta name="description" content="Posts - Howe&#39;s Blog">
 <meta name="author" content="Howe">
 <link rel="canonical" href="/post/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.2211ca3164be7830024f6aad2b3a2e520843a64f8f048445c3401c1249aa051d.css" integrity="sha256-IhHKMWS&#43;eDACT2qtKzouUghDpk&#43;PBIRFw0AcEkmqBR0=" rel="preload stylesheet" as="style">
 <link rel="icon" href="/%3Clink%20/%20abs%20url%3E">
 <link rel="icon" type="image/png" sizes="16x16" href="/%3Clink%20/%20abs%20url%3E">
 <link rel="icon" type="image/png" sizes="32x32" href="/%3Clink%20/%20abs%20url%3E">
@@ -161,6 +161,41 @@
     </a>
   </h1>
 </header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">段式 LCD
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>​	段式 LCD（Segment LCD，Segmented Liquid Crystal Display）是一种常用于低功耗、简单图形显示场景（如电子表、温湿度计、仪表盘等）的液晶显示技术。它通过控制液晶分子的偏振状态来显示固定的“段”（Segment），从而组成数字、字母或图形。
+一、段式LCD原理 ​	段式LCD 必须由交流信号驱动，如果使用直流信号会损坏 LCD。LCD 段在两个电极之间的晶体上施加电荷——COMx 线和 SEGx 段线。这两个电极施加的电位差就是 LCD 段看到的波形。LCD 段上显示的 RMS 电压决定了它是打开还是关闭，一般来说 液晶的显形电压为驱动 IC 的 VLCD 端电压，故调节 VLCD 端的驱动电压，可以调整液晶显示的深浅程度。段式 LCD 常见驱动方式为多路复用（Multiplex），其为了节省引脚，一个段电极（SEG）要被多个 COM（公共电极）“共用”。于是每个液晶段的电压并不是单纯的高低电平，而是 COM 与 SEG 之间的“差分电压”：
+驱动芯片就要“租用”（合理分配）这几个电平来确保：
+当前被选中的段得到较大的有效电压（点亮）； 未被选中的段得到较小的有效电压（熄灭）。 更多内容可以参考 T1 的这个手册，讲的很详细。链接在此
+二、段式LCD驱动方式 ​	段式 LCD 可以通过单片机直接驱动，但是这种方式存在会占用 MCU 的 IO，故一般较为复杂的 LCD 多采用驱动 IC 的方式，通过 SPI、I²C、并行、GPIO bit-bang 等，常见的段式 LCD 驱动 IC 如下（STM32 混入）：
+型号 接口 COM×SEG 特点与应用 HT1621 SPI 4×32 低功耗、常见于电子表、仪表 HT1622 SPI 4×32 带 RAM 缓冲区 HT16C21 I²C 4×40 自动扫描、内置偏置电压 PCF8566 I²C 4×40 NXP 出品，稳定可靠 PCF8576C I²C/并行 4×40 多种模式、支持扩展 STM32L 系列 MCU 内置驱动 最多 8×40 无需外部 IC，超低功耗 AIP1628 / TM1629 / PT6523 SPI/并行 6×13~6×16 常见于家电、遥控器显示 三、驱动示例 ​	本文以 GN1623 IC 为例，描述如何看懂 LCD COM和 SEG 连接图，以及驱动 IC。GN1623 具有 8 个 COM IO，48 个 SEG IO，故其最多可以驱动 8x48 段，内置了串行接口、蜂鸣器、看门狗/时基定时器等功能。
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-10-10 17:58:46 +0800 +0800'>October 10, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;180 words&nbsp;·&nbsp;Howe</footer>
+  <a class="entry-link" aria-label="post link to 段式 LCD" href="/post/%E6%AE%B5%E5%BC%8F-lcd/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Logicx
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>背景 这是一个开源项目，使用 RP2040 为主芯片做一个逻辑分析仪，参考网上的成熟方案，学习下 RP2040 的开发及 rust 前后端开发。本文将记录完成开源项目所遇到的一些新知识点。
+RP2040 1.Mac 环境搭建 本来想直接使用 vscode 工具的，奈何 vscode 下载 sdk 太慢了，也不想配置代理，所以我直接配置的本地环境。
+安装 pico 工程生成工具，https://github.com/raspberrypi/pico-project-generator
+运行 python3 pico_project.py --gui,mac 这里会提示 tkinker 找不到，网上找了一圈试了一堆终于发现这玩意儿可以直接通过brew install pyhon-tk安装。
+然后就可以看到弹出的 ui 界面了，根据需要选择即可，这里其实和 vscode 创建工程一模一样。生成的目录结构如下：
+. ├── build ├── CMakeLists.txt ├── logicx.c └── pico_sdk_import.cmake </p>
+  </div>
+  <footer class="entry-footer"><span title='2025-08-23 10:56:18 +0800 +0800'>August 23, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;44 words&nbsp;·&nbsp;Howe</footer>
+  <a class="entry-link" aria-label="post link to Logicx" href="/post/tech/rp2040/logicx/"></a>
+</article>
 
 <article class="post-entry"> 
   <header class="entry-header">

@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/post/commitizen%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2025-06-14T17:58:46+08:00</lastmod>
-  </url><url>
     <loc>/</loc>
-    <lastmod>2025-06-14T17:58:46+08:00</lastmod>
+    <lastmod>2025-10-10T17:58:46+08:00</lastmod>
   </url><url>
     <loc>/post/</loc>
+    <lastmod>2025-10-10T17:58:46+08:00</lastmod>
+  </url><url>
+    <loc>/post/%E6%AE%B5%E5%BC%8F-lcd/</loc>
+    <lastmod>2025-10-10T17:58:46+08:00</lastmod>
+  </url><url>
+    <loc>/post/tech/rp2040/logicx/</loc>
+    <lastmod>2025-08-23T10:56:18+08:00</lastmod>
+  </url><url>
+    <loc>/post/commitizen%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2025-06-14T17:58:46+08:00</lastmod>
   </url><url>
     <loc>/post/git%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8/</loc>

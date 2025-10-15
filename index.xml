@@ -4,10 +4,105 @@
     <title>Howe&#39;s Blog</title>
     <link>/</link>
     <description>Recent content on Howe&#39;s Blog</description>
-    <generator>Hugo -- 0.147.8</generator>
+    <generator>Hugo -- 0.151.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 14 Jun 2025 17:58:46 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 10 Oct 2025 17:58:46 +0800</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>段式 LCD</title>
+      <link>/post/%E6%AE%B5%E5%BC%8F-lcd/</link>
+      <pubDate>Fri, 10 Oct 2025 17:58:46 +0800</pubDate>
+      <guid>/post/%E6%AE%B5%E5%BC%8F-lcd/</guid>
+      <description>&lt;p&gt;​	段式 LCD（Segment LCD，&lt;strong&gt;Segmented Liquid Crystal Display&lt;/strong&gt;）是一种常用于低功耗、简单图形显示场景（如电子表、温湿度计、仪表盘等）的&lt;strong&gt;液晶显示技术&lt;/strong&gt;。它通过&lt;strong&gt;控制液晶分子的偏振状态&lt;/strong&gt;来显示固定的“段”（Segment），从而组成数字、字母或图形。&lt;/p&gt;
+&lt;h2 id=&#34;一段式lcd原理&#34;&gt;一、段式LCD原理&lt;/h2&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;​	段式LCD 必须由交流信号驱动，如果使用直流信号会损坏 LCD。LCD 段在两个电极之间的晶体上施加电荷——COMx 线和 SEGx 段线。这两个电极施加的电位差就是 LCD 段看到的波形。LCD 段上显示的 RMS 电压决定了它是打开还是关闭，一般来说 液晶的显形电压为驱动 IC 的 VLCD 端电压，故调节 VLCD 端的驱动电压，可以调整液晶显示的深浅程度。段式 LCD 常见驱动方式为多路复用（Multiplex），其为了节省引脚，一个段电极（SEG）要被多个 COM（公共电极）“共用”。于是每个液晶段的电压并不是单纯的高低电平，而是 COM 与 SEG 之间的“&lt;strong&gt;差分电压&lt;/strong&gt;”：&lt;/p&gt;
+&lt;p&gt;驱动芯片就要“租用”（合理分配）这几个电平来确保：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当前被选中的段得到较大的有效电压（点亮）；&lt;/li&gt;
+&lt;li&gt;未被选中的段得到较小的有效电压（熄灭）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;更多内容可以参考 T1 的这个手册，讲的很详细。&lt;a href=&#34;https://www.ti.com.cn/cn/lit/an/zhcaef2/zhcaef2.pdf?ts=1760518673652&#34;&gt;链接在此&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;二段式lcd驱动方式&#34;&gt;二、段式LCD驱动方式&lt;/h2&gt;
+&lt;p&gt;​	段式 LCD 可以通过单片机直接驱动，但是这种方式存在会占用 MCU 的 IO，故一般较为复杂的 LCD 多采用驱动 IC 的方式，通过 SPI、I²C、并行、GPIO bit-bang 等，常见的段式 LCD 驱动 IC 如下（STM32 混入）：&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;型号&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;接口&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;COM×SEG&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;特点与应用&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;HT1621&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;SPI&lt;/td&gt;
+          &lt;td&gt;4×32&lt;/td&gt;
+          &lt;td&gt;低功耗、常见于电子表、仪表&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;HT1622&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;SPI&lt;/td&gt;
+          &lt;td&gt;4×32&lt;/td&gt;
+          &lt;td&gt;带 RAM 缓冲区&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;HT16C21&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;I²C&lt;/td&gt;
+          &lt;td&gt;4×40&lt;/td&gt;
+          &lt;td&gt;自动扫描、内置偏置电压&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;PCF8566&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;I²C&lt;/td&gt;
+          &lt;td&gt;4×40&lt;/td&gt;
+          &lt;td&gt;NXP 出品，稳定可靠&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;PCF8576C&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;I²C/并行&lt;/td&gt;
+          &lt;td&gt;4×40&lt;/td&gt;
+          &lt;td&gt;多种模式、支持扩展&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;STM32L 系列 MCU&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;内置驱动&lt;/td&gt;
+          &lt;td&gt;最多 8×40&lt;/td&gt;
+          &lt;td&gt;无需外部 IC，超低功耗&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;strong&gt;AIP1628 / TM1629 / PT6523&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;SPI/并行&lt;/td&gt;
+          &lt;td&gt;6×13~6×16&lt;/td&gt;
+          &lt;td&gt;常见于家电、遥控器显示&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;三驱动示例&#34;&gt;三、驱动示例&lt;/h2&gt;
+&lt;p&gt;​	本文以 GN1623 IC 为例，描述如何看懂 LCD COM和 SEG 连接图，以及驱动 IC。GN1623 具有 8 个 COM IO，48 个 SEG IO，故其最多可以驱动 8x48 段，内置了串行接口、蜂鸣器、看门狗/时基定时器等功能。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Logicx</title>
+      <link>/post/tech/rp2040/logicx/</link>
+      <pubDate>Sat, 23 Aug 2025 10:56:18 +0800</pubDate>
+      <guid>/post/tech/rp2040/logicx/</guid>
+      <description>&lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
+&lt;p&gt;这是一个开源项目，使用 RP2040 为主芯片做一个逻辑分析仪，参考网上的成熟方案，学习下 RP2040 的开发及 rust 前后端开发。本文将记录完成开源项目所遇到的一些新知识点。&lt;/p&gt;
+&lt;h2 id=&#34;rp2040&#34;&gt;RP2040&lt;/h2&gt;
+&lt;h3 id=&#34;1mac-环境搭建&#34;&gt;1.Mac 环境搭建&lt;/h3&gt;
+&lt;p&gt;本来想直接使用 vscode 工具的，奈何 vscode 下载 sdk 太慢了，也不想配置代理，所以我直接配置的本地环境。&lt;/p&gt;
+&lt;p&gt;安装 pico 工程生成工具，https://github.com/raspberrypi/pico-project-generator&lt;/p&gt;
+&lt;p&gt;运行&lt;code&gt; python3 pico_project.py --gui&lt;/code&gt;,mac 这里会提示 tkinker 找不到，网上找了一圈试了一堆终于发现这玩意儿可以直接通过&lt;code&gt;brew install pyhon-tk&lt;/code&gt;安装。&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;然后就可以看到弹出的 ui 界面了，根据需要选择即可，这里其实和 vscode 创建工程一模一样。生成的目录结构如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── build
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── CMakeLists.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;├── logicx.c
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;└── pico_sdk_import.cmake
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
     <item>
       <title>Commitizen的使用</title>
       <link>/post/commitizen%E7%9A%84%E4%BD%BF%E7%94%A8/</link>

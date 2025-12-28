@@ -2,7 +2,7 @@
 <html lang="en" dir="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.151.0"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.153.3"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -160,6 +160,26 @@
 </div>
 
     </footer>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Lunban-SDK 指北
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>一、生成compile_command.json 为什么要这个？vscode的c/c&#43;&#43;扩展跳转太慢了，所以我一般都使用clangd，clangd又是依赖compile_commnad.json的。
+修改SConstruct文件，在PrepareBuilding之前增加如下代码 env.Tool(&#39;compilation_db&#39;)…
+注意⚠️：这个功能对scons有版本要求，如果发现有问题可以起个虚拟环境，安装个新版本的scons。
+env[&#39;PRJ_CHIP&#39;] = PRJ_CHIP env[&#39;PRJ_BOARD&#39;] = PRJ_BOARD env[&#39;PRJ_KERNEL&#39;] = PRJ_KERNEL env[&#39;PRJ_NAME&#39;] = PRJ_NAME env[&#39;PRJ_APP&#39;] = PRJ_APP env[&#39;PRJ_DEFCONFIG_NAME&#39;] = PRJ_DEFCONFIG_NAME env[&#39;PRJ_OUT_DIR&#39;] = PRJ_OUT_DIR # 生成 compile_commands.json env.Tool(&#39;compilation_db&#39;) env.CompilationDatabase() # prepare building environment objs = PrepareBuilding(env, RTT_ROOT, has_libcpu=False) 这样操作之后直接运行编译命令就可以的了，但是会发现clangd还是没办法跳转，AI了一下解决问题了，在根目录下新建.clangd文件，增加如下内容即可
+CompileFlags: Add: - --target=riscv32 - -ferror-limit=0 Remove: - -march=* - -mabi=* - -mcmodel=* - -mno-* - -xtheade Diagnostics: UnusedIncludes: None MissingIncludes: None 原因是使用的工具链（如 riscv64-unknown-elf）包含一些 clangd 无法识别的特殊参数：
+（平头哥扩展 (-xtheade) - 这是芯片厂商的自定义指令扩展
+特定的架构参数 - 如特殊的 -march 值
+如果不移除这些参数，clangd 会报错，导致代码智能提示功能失效。这个配置文件确保 clangd 能正常工作，同时不影响实际的编译过程。
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-28 15:21:28 +0800 +0800'>December 28, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;80 words&nbsp;·&nbsp;Howe</footer>
+  <a class="entry-link" aria-label="post link to Lunban-SDK 指北" href="/post/lunban-sdk-%E6%8C%87%E5%8C%97/"></a>
 </article>
 
 <article class="post-entry"> 

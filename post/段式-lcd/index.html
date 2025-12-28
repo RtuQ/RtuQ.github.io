@@ -9,7 +9,7 @@
 <meta name="keywords" content="">
 <meta name="description" content="​	段式 LCD（Segment LCD，Segmented Liquid Crystal Display）是一种常用于低功耗、简单图形显示场景（如电子表、温湿度计、仪表盘等）的液晶显示技术。它通过控制液晶分子的偏振状态来显示固定的“段”（Segment），从而组成数字、字母或图形。
 一、段式LCD原理
-
+ 
 ​	段式LCD 必须由交流信号驱动，如果使用直流信号会损坏 LCD。LCD 段在两个电极之间的晶体上施加电荷——COMx 线和 SEGx 段线。这两个电极施加的电位差就是 LCD 段看到的波形。LCD 段上显示的 RMS 电压决定了它是打开还是关闭，一般来说 液晶的显形电压为驱动 IC 的 VLCD 端电压，故调节 VLCD 端的驱动电压，可以调整液晶显示的深浅程度。段式 LCD 常见驱动方式为多路复用（Multiplex），其为了节省引脚，一个段电极（SEG）要被多个 COM（公共电极）“共用”。于是每个液晶段的电压并不是单纯的高低电平，而是 COM 与 SEG 之间的“差分电压”：
 驱动芯片就要“租用”（合理分配）这几个电平来确保：
 
@@ -140,7 +140,7 @@
 <meta name="twitter:title" content="段式 LCD">
 <meta name="twitter:description" content="​	段式 LCD（Segment LCD，Segmented Liquid Crystal Display）是一种常用于低功耗、简单图形显示场景（如电子表、温湿度计、仪表盘等）的液晶显示技术。它通过控制液晶分子的偏振状态来显示固定的“段”（Segment），从而组成数字、字母或图形。
 一、段式LCD原理
-
+ 
 ​	段式LCD 必须由交流信号驱动，如果使用直流信号会损坏 LCD。LCD 段在两个电极之间的晶体上施加电荷——COMx 线和 SEGx 段线。这两个电极施加的电位差就是 LCD 段看到的波形。LCD 段上显示的 RMS 电压决定了它是打开还是关闭，一般来说 液晶的显形电压为驱动 IC 的 VLCD 端电压，故调节 VLCD 端的驱动电压，可以调整液晶显示的深浅程度。段式 LCD 常见驱动方式为多路复用（Multiplex），其为了节省引脚，一个段电极（SEG）要被多个 COM（公共电极）“共用”。于是每个液晶段的电压并不是单纯的高低电平，而是 COM 与 SEG 之间的“差分电压”：
 驱动芯片就要“租用”（合理分配）这几个电平来确保：
 
@@ -342,7 +342,7 @@
   </header> 
   <div class="post-content"><p>​	段式 LCD（Segment LCD，<strong>Segmented Liquid Crystal Display</strong>）是一种常用于低功耗、简单图形显示场景（如电子表、温湿度计、仪表盘等）的<strong>液晶显示技术</strong>。它通过<strong>控制液晶分子的偏振状态</strong>来显示固定的“段”（Segment），从而组成数字、字母或图形。</p>
 <h2 id="一段式lcd原理">一、段式LCD原理<a hidden class="anchor" aria-hidden="true" href="#一段式lcd原理">#</a></h2>
-<!-- raw HTML omitted -->
+<img src="https://mdoss.oss-cn-hangzhou.aliyuncs.com/md/20251015221633911.png" alt="a37c4d06-c366-4fec-bbe2-04dc720a7740" style="zoom: 33%;" class="center-img"/> 
 <p>​	段式LCD 必须由交流信号驱动，如果使用直流信号会损坏 LCD。LCD 段在两个电极之间的晶体上施加电荷——COMx 线和 SEGx 段线。这两个电极施加的电位差就是 LCD 段看到的波形。LCD 段上显示的 RMS 电压决定了它是打开还是关闭，一般来说 液晶的显形电压为驱动 IC 的 VLCD 端电压，故调节 VLCD 端的驱动电压，可以调整液晶显示的深浅程度。段式 LCD 常见驱动方式为多路复用（Multiplex），其为了节省引脚，一个段电极（SEG）要被多个 COM（公共电极）“共用”。于是每个液晶段的电压并不是单纯的高低电平，而是 COM 与 SEG 之间的“<strong>差分电压</strong>”：</p>
 <p>驱动芯片就要“租用”（合理分配）这几个电平来确保：</p>
 <ul>
@@ -409,10 +409,10 @@
 <h2 id="三驱动示例">三、驱动示例<a hidden class="anchor" aria-hidden="true" href="#三驱动示例">#</a></h2>
 <p>​	本文以 GN1623 IC 为例，描述如何看懂 LCD COM和 SEG 连接图，以及驱动 IC。GN1623 具有 8 个 COM IO，48 个 SEG IO，故其最多可以驱动 8x48 段，内置了串行接口、蜂鸣器、看门狗/时基定时器等功能。</p>
 <p>​	GN1623 可以通过CS、WR、RD、DATA 四 根信号线控制，支持单独/连续，读/写功能。一般来说MCU 可以通用 CS、WR、DATA 三根信号线控制。以下是写模式的时序：</p>
-<!-- raw HTML omitted -->
+<img src="https://mdoss.oss-cn-hangzhou.aliyuncs.com/md/20251015224415052.png" alt="341ebcb1-79fe-4e19-a8de-909855a1dbef" style="zoom:50%;" />
 <p>通过时序图可知其命令主要由Command code、Address、Data 三种要素组成，这个时序图很简单，这里不再赘述。</p>
 <p>​	驱动 IC 如何控制这些段的关闭与显示呢？其实驱动 IC 内部有存在一个 RAM 区域，一一映射对应的 COM 和 SEG 段，MCU 根据是否需要显示段，操作对应的地址写入 1/0 即可让 LCD 显示/关闭液晶。以下是 GN1623 的 RAM 对应关系图，可以看到 Address 由 7bit 组成对应 7 个 SEG，Data 由 4bit 组成对应 8 个 COM</p>
-<!-- raw HTML omitted -->
+<img src="https://mdoss.oss-cn-hangzhou.aliyuncs.com/md/20251015224948638.png" alt="05ef6a8e43d6ab53df20c504ebb5b74e" style="zoom:50%;" />
 <p>如何将 RAM 中的数据映射到实际电路上呢？一般来说，打样 LCD 的时候，LCD 厂商都会提供一个原理图，这里面就包含由每段连的 COM 和 SEG 信息，通过原理图就可以将不同的图形显示的字节计算出来。<a href="https://blog.csdn.net/xiebingsuccess/article/details/91876306">这个链接可以用来参考。</a></p>
 
 
@@ -422,6 +422,11 @@
     <ul class="post-tags">
     </ul>
 <nav class="paginav">
+  <a class="prev" href="/post/lunban-sdk-%E6%8C%87%E5%8C%97/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Lunban-SDK 指北</span>
+  </a>
   <a class="next" href="/post/tech/rp2040/logicx/">
     <span class="title">Next »</span>
     <br>

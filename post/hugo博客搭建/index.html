@@ -363,9 +363,9 @@ jobs:
 </span></span><span class="line"><span class="cl">$ git submodule add --depth<span class="o">=</span><span class="m">1</span> https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
 </span></span></code></pre></div><p>修改博客配置应用主题,通过修改根目录下的hugo.yml文件</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">baseURL</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">languageCode</span><span class="p">:</span><span class="w"> </span><span class="l">zh-cn</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">Howe&#39;s Blog</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">theme</span><span class="p">:</span><span class="w"> </span><span class="l">PaperMod</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">languageCode</span><span class="p">:</span><span class="w"> </span><span class="l">zh-cn</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">Howe&#39;s Blog</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">theme</span><span class="p">:</span><span class="w"> </span><span class="l">PaperMod</span><span class="w">
 </span></span></span></code></pre></div><p>这样博客的初步框架就打好了，可以先本地预览一下。命令行输入以下指令之后，就可以本地预览了，打开浏览器访问//localhost:1313/</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server
 </span></span></code></pre></div></li>
@@ -383,13 +383,13 @@ jobs:
 <p>通过设置github workflow，这样就可以通过自动化发布自己的博文啦！因为我的仓库和github pages仓库不是同一个，所有需要将生成出来的静态文件，push到另一仓库，我的yml配置如下，在仓库根目录下创建<code> .github/workflow/hugo-deploy.yml</code></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">GitHub Pages</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">on</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">main </span><span class="w"> </span><span class="c"># Set a branch to deploy</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">jobs</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">deploy</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-22.04</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">concurrency</span><span class="p">:</span><span class="w">
@@ -420,14 +420,15 @@ jobs:
 </span></span></span></code></pre></div><p>设置完成之后，每次push就会出发github action发布博文了。</p>
 <blockquote>
 <p>[!NOTE]</p>
-<p>PERSONAL_TOKEN，在仓库<code> Settings-&gt;Secrets and variables-&gt;Actions</code>下设置</p></blockquote>
+<p>PERSONAL_TOKEN，在仓库<code> Settings-&gt;Secrets and variables-&gt;Actions</code>下设置</p>
+</blockquote>
 <h1 id="5配置自定义域名">5.配置自定义域名<a hidden class="anchor" aria-hidden="true" href="#5配置自定义域名">#</a></h1>
 <p>配置自定义域名，可以先在阿里云上购买自己喜欢的域名，通过审核后，先在阿里云域名管理平台上设置<code>域名解析 </code>,添加两个CNAME，<code> @</code> 和<code>www</code>其他参数默认即可。</p>
 <p>回到Github Pages仓库，在<code>Settings-&gt; Pages</code>中 <code>Custom domain</code> 填入自己的自定义域名。</p>
 <p>由于hugo生成静态网页，是不带CNAME文件的，所以自动推送的时候会把Github pages仓库里面新生成的CNAME文件覆盖掉。
 在Github workflows配置文件中添加如下内容即可自动创建CNAME文件：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># 创建 CNAME, 用于自定义域名</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;finnp/create-file-action@master&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;finnp/create-file-action@master&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">env</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">FILE_NAME</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;./public/CNAME&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">FILE_DATA</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;howeblogs.top&#34;</span><span class="w"> </span><span class="c">#自定义域名</span><span class="w">
